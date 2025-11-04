@@ -19,7 +19,7 @@ jobs:
       run: echo "APP_MESSAGE=${{ secrets.APP_MESSAGE }}" > .env
 
     - name: Add APP_HEALTH to .env
-      run: echo "APP_HEALTH=${{ secrets.APP_MESSAGE }}" > .env
+      run: echo "APP_HEALTH=${{ secrets.APP_MESSAGE }}" >> .env
 
     - name: Print .env contents
       run: cat .env
