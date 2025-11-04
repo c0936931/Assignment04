@@ -1,0 +1,32 @@
+name: Flask App CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Add APP_MESSAGE to .env
+      run: echo "APP_MESSAGE=${{ secrets.APP_MESSAGE }}" > .env
+
+    - name: Add APP_HEALTH to .env
+      run: echo "APP_HEALTH=${{ secrets.APP_MESSAGE }}" > .env
+
+    - name: Print .env contents
+      run: cat .env
+
+    - name: Build and run container
+      run: |
+        docker-compose up --build -d
+        sleep 5
+        curl -s http://localhost:5000
+        curl -s http://localhost:5000/health
