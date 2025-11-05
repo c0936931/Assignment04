@@ -9,3 +9,11 @@ Prints APP_MESSAGE secret (Not very secret is it)
 /home
 
 Prints a static APP_HEALTH secret
+
+/fizzbuzz
+
+Prints out the fizzbuzz game to n
+
+/fibonacci
+
+Prints out the nth number in the fibonacci sequence
